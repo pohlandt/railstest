@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20101112141809
+#
+# Table name: microposts
+#
+#  id           :integer         not null, primary key
+#  content      :string(255)
+#  user_id      :integer
+#  creationdate :datetime
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 class Micropost < ActiveRecord::Base
 	belongs_to :user
 	validates :content, :length => { :maximum => 140 }

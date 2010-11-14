@@ -1,6 +1,4 @@
 Testapp::Application.routes.draw do
-  get "users/new"
-  
   match '/signup',  :to => 'users#new'
 
   match '/contact', :to => 'pages#contact'
@@ -14,8 +12,7 @@ Testapp::Application.routes.draw do
   get "pages/about"
   
   resources :microposts
-
-  #resources :users
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
