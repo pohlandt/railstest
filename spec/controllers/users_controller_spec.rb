@@ -80,7 +80,7 @@ describe UsersController do
 	describe "success" do
 
       before(:each) do
-        @attr = { :name => "New User", :email => "user@example.com",
+        @attr = { :name => "New User", :email => "user2@example.com",
                   :password => "foobar", :password_confirmation => "foobar" }
       end
 
@@ -90,16 +90,12 @@ describe UsersController do
         end.should change(User, :count).by(1)
       end
 
-      it "should redirect to the user show page" do
+      it "should redirect to the user show page and have a welcome message" do
         post :create, :user => @attr
         response.should redirect_to(user_path(assigns(:user)))
+		flash[:success].should =~ /welcome to the sample app/i
       end    
     end
-	
-	it "should have a welcome message" do
-        post :create, :user => @attr
-        flash[:success].should =~ /welcome to the sample app/i
-      end
 	
   end
 
